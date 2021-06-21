@@ -1,0 +1,295 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'content' %}
+<!-- Breadcrumb Begin -->
+<div class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__links">
+                    <a href="./index.html"><i class="fa fa-home"></i> Home</a>
+                    <span>{{shop_type}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+
+<!-- Shop Section Begin -->
+<section class="shop spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <div class="shop__sidebar">
+                    <div class="sidebar__categories">
+                        <div class="section-title">
+                            <h4>Categories</h4>
+                        </div>
+                        <div class="categories__accordion">
+                            <div class="accordion" id="accordionExample">
+                                {% comment %} <div class="card">
+                                    <div class="card-heading active">
+                                        <a data-toggle="collapse" data-target="#collapseOne">Women</a>
+                                    </div>
+                                    <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <ul>
+                                                <li><a href="#">Coats</a></li>
+                                                <li><a href="#">Jackets</a></li>
+                                                <li><a href="#">Dresses</a></li>
+                                                <li><a href="#">Shirts</a></li>
+                                                <li><a href="#">T-shirts</a></li>
+                                                <li><a href="#">Jeans</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div> {% endcomment %}
+                                {% for cat, num in close_categories %}
+                                <div class="card">
+                                    <div class="card-heading ">
+                                        <a data-toggle="collapse" data-target="#collapse{{num}}">{{cat}}</a>
+                                    </div>
+                                    <div id="collapse{{num}}" class="collapse" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <ul class="{{cat|lower}}">
+                                                <li><a href="#">Coat</a></li>
+                                                <li><a href="#">Jacket</a></li>
+                                                <li><a href="#">Dresse</a></li>
+                                                <li><a href="#">Shirt</a></li>
+                                                <li><a href="#">T-shirt</a></li>
+                                                <li><a href="#">Jean</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                <!-- <div class="card">
+                                    <div class="card-heading">
+                                        <a data-toggle="collapse" data-target="#collapseThree">Kids</a>
+                                    </div>
+                                    <div id="collapseThree" class="collapse" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <ul>
+                                                <li><a href="#">Coats</a></li>
+                                                <li><a href="#">Jackets</a></li>
+                                                <li><a href="#">Dresses</a></li>
+                                                <li><a href="#">Shirts</a></li>
+                                                <li><a href="#">T-shirts</a></li>
+                                                <li><a href="#">Jeans</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="card">
+                                    <div class="card-heading ">
+                                        <a data-toggle="collapse" data-target="#collapseFour">Accessories</a>
+                                    </div>
+                                    <div id="collapseFour" class="collapse" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <ul class='accessories'>
+                                                <li><a href="#">Hat</a></li>
+                                                <li><a href="#">Scarf</a></li>
+                                                <li><a href="#">Glove</a></li>
+                                                <li><a href="#">Glasse</a></li>
+                                                <li><a href="#">Jewelry</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-heading">
+                                        <a data-toggle="collapse" data-target="#collapseFive">Cosmetic</a>
+                                    </div>
+                                    <div id="collapseFive" class="collapse" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <ul class='cosmetics'>
+                                                <li><a href="#">Perfume</a></li>
+                                                <li><a href="#">Depilatory</a></li>
+                                                <li><a href="#">Cream</a></li>
+                                                <li><a href="#">Soap</a></li>
+                                                <li><a href="#">Face Powder</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sidebar__filter">
+                        <div class="section-title">
+                            <h4>Shop by price</h4>
+                        </div>
+                        <div class="filter-range-wrap">
+                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
+                                data-min="33" data-max="99"></div>
+                            <div class="range-slider">
+                                <div class="price-input">
+                                    <p>Price:</p>
+                                    <input type="text" id="minamount">
+                                    <input type="text" id="maxamount">
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" id='btn-filter'>Filter</a>
+                    </div>
+                    <div class="sidebar__sizes">
+                        <div class="section-title">
+                            <h4>Shop by size</h4>
+                        </div>
+                        <div class="size__list">
+                        <form action="">
+                            <label for="XXS">
+                                xxs
+                                <input type="checkbox" id="XXS">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label for="XS">
+                                xs
+                                <input type="checkbox" id="XS">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label for="XS-S">
+                                xs-s
+                                <input type="checkbox" id="XS-S">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label for="S">
+                                s
+                                <input type="checkbox" id="S">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label for="M">
+                                m
+                                <input type="checkbox" id="M">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label for="ML">
+                                m-l
+                                <input type="checkbox" id="ML">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label for="L">
+                                l
+                                <input type="checkbox" id="L">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label for="XL">
+                                xl
+                                <input type="checkbox" id="XL">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        </form>
+                    </div>
+                    <div class="sidebar__color">
+                        <div class="section-title">
+                            <h4>Shop by COLOR</h4>
+                        </div>
+                        <form action="color__list">
+                        <div class="size__list color__list">
+                            <label for="black">
+                                Blacks
+                                <input type="checkbox" id="black">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label for="whites">
+                                Whites
+                                <input type="checkbox" id="whites">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label for="reds">
+                                Reds
+                                <input type="checkbox" id="reds">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label for="greys">
+                                Greys
+                                <input type="checkbox" id="greys">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label for="blues">
+                                Blues
+                                <input type="checkbox" id="blues">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label for="beige">
+                                Beige Tones
+                                <input type="checkbox" id="beige">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label for="greens">
+                                Greens
+                                <input type="checkbox" id="greens">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label for="yellows">
+                                Yellows
+                                <input type="checkbox" id="yellows">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-9">
+                <div class="row boxies">
+                    {% for item in page %}
+                    <div class="col-lg-4 col-md-6 ">
+                        <div class="product__item ">
+                            <div class="product__item__pic set-bg " data-setbg="{{item.thumnail.url}}">
+                                {{ item.product_label|safe }}
+                                <ul class="product__hover">
+                                    <li><a href="{{item.thumnail.url}}" class="image-popup"><span
+                                                class="arrow_expand"></span></a></li>
+                                    <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                                    <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="product__item__text">
+                                <h6><a href="{{item.get_absolute_url}}">{{item.name}}</a></h6>
+                                <div class="rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                {{ item.product_price|safe }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% comment %} Pagination part {% endcomment %}
+                    <div class="col-lg-12 text-center">
+                        <div class="pagination__option">
+
+                            {% if page.has_previous %}
+                            <a href="?page={{page.previous_page_number}}"><i class="fa fa-angle-left"></i></a>
+                            {% endif %}
+
+                            <a href="?page=1">1st</a>
+
+                            {% for num in paginate.page_range %}
+
+                            {% if num > page.number|add:'-3' and num < page.number|add:'3' %} <a href="?page={{num}}">
+                                {{num}}</a>
+                                {% endif %}
+
+                                {% endfor %}
+
+                                <a href="?page={{paginate.num_pages}}">end</a>
+
+                                {% if page.has_next %}
+                                <a href="?page={{page.next_page_number}}"><i class="fa fa-angle-right"></i></a>
+                                {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="{% static 'js/ajax.js' %}"></script>
+{% endblock 'content' %}

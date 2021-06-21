@@ -1,0 +1,84 @@
+{% load static %}
+<!-- Page Preloder -->
+<!-- <div id="preloder">
+    <div class="loader"></div>
+</div> -->
+
+<!-- Offcanvas Menu Begin -->
+<div class="offcanvas-menu-overlay"></div>
+<div class="offcanvas-menu-wrapper">
+    <div class="offcanvas__close">+</div>
+    <ul class="offcanvas__widget">
+        <li><span class="icon_search search-switch"></span></li>
+        <li><a href="#"><span class="icon_heart_alt"></span>
+                <div class="tip">{{order_quantity}}</div>
+            </a></li>
+        <li><a href="#"><span class="icon_bag_alt"></span>
+                <div class="tip"  id='cart-bag'>{{order_quantity}}</div>
+            </a></li>
+    </ul>
+    <div class="offcanvas__logo">
+        <a href="./index.html"><img src="{% static 'img/logo.png' %}" alt=""></a>
+    </div>
+    <div id="mobile-menu-wrap"></div>
+    <div class="offcanvas__auth">
+        <a href=" {% url 'core:Login-Page' %}">Login</a>
+        <a href="{% url 'core:Register-Page' %}">Register</a>
+    </div>
+</div>
+<!-- Offcanvas Menu End -->
+
+<!-- Header Section Begin -->
+<header class="header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-3 col-lg-2">
+                <div class="header__logo">
+                    <a href="./index.html"><img src="{% static 'img/logo.png' %}" alt=""></a>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-7">
+                <nav class="header__menu">
+                    <ul>
+                        <li class="active"><a href="{% url 'core:Index-Page'  %}?page=1">Home</a></li>
+                        <li><a href="{% url 'core:Shop-Page' shop_type='Women' %}?page=1">Women’s</a></li>
+                        <li><a href="{% url 'core:Shop-Page' shop_type='Men' %}?page=1">Men’s</a></li>
+                        <li><a href="{% url 'core:Shop-Page' shop_type='Shop' %}?page=1">Shop</a></li>
+                        <li><a href="#">Pages</a>
+                            <ul class="dropdown">
+                                <li><a href="{% url 'core:Product-Details' pk=2 klass='CosmeticProduct' %}">Product
+                                        Details</a></li>
+                                <li><a href="./shop-cart.html">Shop Cart</a></li>
+                                <li><a href="{% url 'core:Checkout-Page' %}">Checkout</a></li>
+                                <li><a href="./blog-details.html">Blog Details</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="./blog.html">Blog</a></li>
+                        <li><a href="./contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3">
+                <div class="header__right">
+                    <div class="header__right__auth">
+                        <a href="{% url 'core:Login-Page' %}">Login</a>
+                        <a href="{% url 'core:Register-Page' %}">Register</a>
+                    </div>
+                    <ul class="header__right__widget">
+                        <li><span class="icon_search search-switch"></span></li>
+                        <li><a href="#"><span class="icon_heart_alt"></span>
+                                <div class="tip">{{order_quantity}}</div>
+                            </a></li>
+                        <li><a href="#"><span class="icon_bag_alt"></span>
+                                <div class="tip">{{order_quantity}}</div>
+                            </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="canvas__open">
+            <i class="fa fa-bars"></i>
+        </div>
+    </div>
+</header>
+<!-- Header Section End -->

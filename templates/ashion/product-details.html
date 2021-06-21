@@ -1,0 +1,291 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'content' %}
+    <!-- Breadcrumb Begin -->
+
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links">
+                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
+                        <a href="#">{{product.category.name}} 's </a>
+                        <span>{{product.name}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+    <!-- Product Details Section Begin -->
+    <section class="product-details spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="product__details__pic">
+                    {% if imgs %}
+                        <div class="product__details__pic__left product__thumb nice-scroll">
+                        {% for img in imgs %}
+                            <a class="pt" href="#product-{{img.id}}">
+                                <img src="{{img.img.url}}" alt="">
+                            </a>
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                        <div class="product__details__slider__content">
+                            <div class="product__details__pic__slider owl-carousel">
+                            <img data-hash="product-{{img.id}}" class="product__big__img" src="{{product.thumnail.url}}" alt="">
+                            {% if imgs %}
+
+                            {% for img in imgs %}
+                                <img data-hash="product-{{img.id}}" class="product__big__img" src="{{img.img.url}}" alt="">
+                            {% endfor %}
+
+                            {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="product__details__text">
+                        <h3>{{product.name}} <span>Brand: SKMEIMore Men Watches from SKMEI</span></h3>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            {% comment %} to see later {% endcomment %}
+                            <span>( 138 reviews )</span>
+                        </div>
+                        <div class="product__details__price">{{product.product_price|safe}}</div>
+                        <p>Nemo enim ipsam voluptatem quia aspernatur aut odit aut loret fugit, sed quia consequuntur
+                        magni lores eos qui ratione voluptatem sequi nesciunt.</p>
+                        <!-- when not product.quantity, we can't add to the card or see available elemet,  -->
+                        <!-- just only see the caracteristics -->
+                        {% if product.quantity %}
+                        <div class="product__details__button">
+                            <div class="quantity">
+                                <span>Quantity:</span>
+                                <div class="pro-qty">
+                                    <input type="text" id="add-input" value="1">
+                                </div>
+                            </div>
+                            <a href="#" class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a>
+                            <ul>
+                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                                <li><a href="#"><span class="icon_adjust-horiz"></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__details__widget">
+                            <ul>
+                                <li>
+                                    <span>Availability:</span>
+                                    <div class="stock__checkbox">
+                                        <label for="stockin">
+                                            In Stock
+                                            {% if product.quantity > 0 %}
+                                                <input type="checkbox" id="stockin" checked>
+                                                {% else %}
+                                                <input type="checkbox" id="stockin">
+                                            {% endif %}
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </li>
+                                
+                                {% if product.available_color %}
+                                <li>
+                                    <span>Available color:</span>
+                                    <div class="color__checkbox">
+                                    {% for color in product.available_color %}
+                                    {% if color %}
+                                        <label for="{{color}}">
+                                            <input type="radio" name="color__radio" id="{{color}}" >
+                                            <span class="checkmark {{color}}-bg"></span>
+                                        </label>
+                                    {% endif %}
+                                    {% endfor %}
+                                    </div>
+                                </li> 
+                                {% endif %}
+                                {% if product.size %}                             
+                                <li>
+                                    <span>Available size:</span>
+                                    <div class="size__btn">
+                                        <label id="size__radio" for="xs-btn">
+                                            <input type="radio" id="xs-btn">
+                                            xs
+                                        </label>
+                                        <label id="size__radio" for="s-btn">
+                                            <input type="radio" id="s-btn">
+                                            s
+                                        </label>
+                                        <label id="size__radio" for="m-btn">
+                                            <input type="radio" id="m-btn">
+                                            m
+                                        </label>
+                                        <label id="size__radio" for="l-btn" >
+                                            <input type="radio" id="l-btn">
+                                            l
+                                        </label>
+                                    </div>
+                                </li>
+                                {% endif %}
+                                <li>
+                                    <span >Promotions:</span>
+                                    <p>Free shipping</p>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="product__details__tab">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Description</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Specification</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">Reviews ( 2 )</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                <h6>Description</h6>
+                                <p>{{product.description}}</p>
+                            </div>
+                            <div class="tab-pane" id="tabs-2" role="tabpanel">
+                                <h6>Specification</h6>
+                                <p>{{product.specification}}</p>
+                            </div>
+                            <div class="tab-pane" id="tabs-3" role="tabpanel">
+                            {% comment %} a voir plutard {% endcomment %}
+                                <h6>Reviews ( 2 )</h6>
+                                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed
+                                    quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt loret.
+                                    Neque porro lorem quisquam est, qui dolorem ipsum quia dolor si. Nemo enim ipsam
+                                    voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed quia ipsu
+                                    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Nulla
+                                consequat massa quis enim.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
+                                    dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
+                                    nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
+                                quis, sem.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if product.related %}
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="related__title">
+                        <h5>RELATED PRODUCTS</h5>
+                    </div>
+                </div>
+                {% for item in product.related  %}
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="{{item.thumnail.url}}">
+                            {{ item.product_label|safe }}
+                            <ul class="product__hover">
+                                <li><a href="{{item.thumnail.url}}" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                                <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                            </ul>
+                        </div>
+                    <div class="product__item__text">
+                        <h6><a href="{{item.get_absolute_url}}">{{item.name}}</a></h6>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        {{ item.product_price|safe }}
+                    </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% comment %} <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="{% static 'img/product/related/rp-2.jpg' %}">
+                            <ul class="product__hover">
+                                <li><a href="{% static 'img/product/related/rp-2.jpg' %}" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                                <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#">Flowy striped skirt</a></h6>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="product__price">$ 49.0</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="{% static 'img/product/related/rp-3.jpg' %}">
+                            <div class="label stockout">out of stock</div>
+                            <ul class="product__hover">
+                                <li><a href="{% static 'img/product/related/rp-3.jpg' %}" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                                <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#">Cotton T-Shirt</a></h6>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="product__price">$ 59.0</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="{% static 'img/product/related/rp-4.jpg' %}">
+                            <ul class="product__hover">
+                                <li><a href="{% static 'img/product/related/rp-4.jpg' %}" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                                <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#">Slim striped pocket shirt</a></h6>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="product__price">$ 59.0</div>
+                        </div> {% endcomment %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="{% static 'js/add_to_cart.js' %}"></script>
+    <!-- Product Details Section End -->
+{% endblock 'content' %}

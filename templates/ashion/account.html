@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block 'content' %}
+<!-- form section-->
+
+
+<form action="{% url 'core:Login-Page'%}" method='POST'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="site-btn">submit</button>
+</form>
+<!-- je voulais styler mais nan, ça passe pas! -->
+<style>
+    * {
+        background: black,
+    }
+</style>
+{% endblock 'content' %}

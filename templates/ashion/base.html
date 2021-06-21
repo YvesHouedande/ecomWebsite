@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    {% block 'head' %}
+        {% include 'head.html' %}
+    {% endblock 'head' %}
+<body>
+    {% block 'header' %} 
+        {% include 'header.html' %} 
+    {% endblock 'header' %}
+
+    {% block 'content' %}
+    {% comment %}
+        We put what we want here.  
+    {% endcomment %}
+    {% endblock 'content' %}
+
+    {% block 'footer' %}
+        {% include 'footer.html' %}
+    {% endblock 'footer' %}
+
+    {% block 'scripts.html' %}
+        {% include 'scripts.html' %}
+    {% endblock 'scripts.html' %}
+</body>
+</html>
